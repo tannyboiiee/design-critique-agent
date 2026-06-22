@@ -22,6 +22,17 @@ const runAnotherBtn = document.getElementById('run-another-btn');
 let currentBase64 = null;
 let traceInterval = null;
 
+// --- Tab switching ---
+
+document.querySelectorAll('.tab-btn').forEach((btn) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
+    document.querySelectorAll('.tab-panel').forEach((p) => p.classList.add('hidden'));
+    btn.classList.add('active');
+    document.getElementById(`tab-${btn.dataset.tab}`).classList.remove('hidden');
+  });
+});
+
 // --- Upload handling ---
 
 dropzone.addEventListener('click', () => fileInput.click());
@@ -73,6 +84,8 @@ function resetToUpload() {
   resultsSection.classList.add('hidden');
   metaSection.classList.add('hidden');
   if (traceInterval) clearInterval(traceInterval);
+  document.querySelectorAll('.tab-btn').forEach((b, i) => b.classList.toggle('active', i === 0));
+  document.querySelectorAll('.tab-panel').forEach((p, i) => p.classList.toggle('hidden', i !== 0));
 }
 
 // --- Analysis ---
