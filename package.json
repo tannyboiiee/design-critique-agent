@@ -1,0 +1,13 @@
+{
+  "name": "design-critique-agent",
+  "version": "0.1.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test:dryrun": "node test/dryRun.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "sharp": "^0.33.5"
+  }
+}
