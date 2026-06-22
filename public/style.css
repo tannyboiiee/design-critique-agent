@@ -28,9 +28,9 @@ body {
 }
 
 .app {
-  max-width: 1100px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 48px 24px 80px;
+  padding: 48px 32px 80px;
 }
 
 .hidden { display: none !important; }
@@ -152,32 +152,39 @@ button {
   white-space: pre-wrap;
 }
 
-/* Results */
-.results-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+/* Results - tabbed, full-width card grid */
+.results-section { display: block; }
+
+.tab-bar {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
 }
-@media (max-width: 800px) {
-  .results-section { grid-template-columns: 1fr; }
+.tab-btn {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--text-secondary);
+  font-family: var(--mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  padding: 12px 18px;
+  cursor: pointer;
+}
+.tab-btn:hover { color: var(--text-primary); }
+.tab-btn.active {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
-.panel {
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--surface);
-  overflow: hidden;
-}
+.tab-panel.hidden { display: none; }
+
 .panel-header {
-  padding: 20px;
+  padding: 0 4px 16px;
   border-bottom: 1px solid var(--border);
-}
-.panel-header h2 {
-  font-size: 14px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin: 0 0 4px;
-  color: var(--text-primary);
+  margin-bottom: 16px;
 }
 .panel-sub {
   font-size: 11px;
@@ -195,17 +202,19 @@ button {
   font-weight: 600;
 }
 
-.findings-list {
-  padding: 8px;
-  max-height: 640px;
-  overflow-y: auto;
+.findings-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 16px;
+}
+@media (max-width: 700px) {
+  .findings-grid { grid-template-columns: 1fr; }
 }
 
 .finding-card {
   border: 1px solid var(--border);
   border-radius: 6px;
   padding: 14px;
-  margin: 8px;
   background: var(--surface-raised);
 }
 .finding-card img {
