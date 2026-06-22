@@ -46,22 +46,25 @@
 
   <section id="results-section" class="results-section hidden">
 
-    <div class="panel">
+    <div class="tab-bar">
+      <button class="tab-btn active" data-tab="judgment" type="button">design judgment</button>
+      <button class="tab-btn" data-tab="compliance" type="button">accessibility compliance</button>
+    </div>
+
+    <div class="tab-panel" id="tab-judgment">
       <div class="panel-header">
-        <h2>design judgment</h2>
         <span class="panel-sub">severity-scored &middot; laws of ux, nielsen, house rules</span>
         <div class="summary-row" id="severity-summary"></div>
       </div>
-      <div class="findings-list" id="judgment-list"></div>
+      <div class="findings-grid" id="judgment-list"></div>
     </div>
 
-    <div class="panel">
+    <div class="tab-panel hidden" id="tab-compliance">
       <div class="panel-header">
-        <h2>accessibility compliance</h2>
         <span class="panel-sub">pass / fail / needs-review &middot; wcag 2.2</span>
         <div class="summary-row" id="status-summary"></div>
       </div>
-      <div class="findings-list" id="compliance-list"></div>
+      <div class="findings-grid" id="compliance-list"></div>
     </div>
 
   </section>
