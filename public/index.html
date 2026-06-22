@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Design Critique Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div class="app">
+
+  <header class="app-header">
+    <div class="logo">DESIGN_CRITIQUE_AGENT<span class="cursor">_</span></div>
+    <div class="tagline">laws of ux &rarr; nielsen &rarr; house rules &rarr; wcag</div>
+  </header>
+
+  <section id="upload-section" class="upload-section">
+    <div id="dropzone" class="dropzone">
+      <input type="file" id="file-input" accept="image/png,image/jpeg" hidden />
+      <div class="dropzone-content">
+        <p class="dz-label">drop a screenshot here, or click to browse</p>
+        <p class="dz-hint">png or jpg &middot; single frame &middot; no figma file needed</p>
+      </div>
+    </div>
+    <div id="preview-area" class="preview-area hidden">
+      <img id="preview-img" alt="Uploaded screenshot preview" src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" />
+      <div class="preview-actions">
+        <button id="analyze-btn" class="btn-primary" type="button">run critique</button>
+        <button id="reset-btn" class="btn-text" type="button">choose another</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="loading-section" class="loading-section hidden">
+    <pre id="trace-log" class="trace-log" aria-live="polite"></pre>
+  </section>
+
+  <section id="error-section" class="error-section hidden">
+    <pre id="error-message" class="error-message"></pre>
+    <button id="error-reset-btn" class="btn-text" type="button">try again</button>
+  </section>
+
+  <section id="results-section" class="results-section hidden">
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2>design judgment</h2>
+        <span class="panel-sub">severity-scored &middot; laws of ux, nielsen, house rules</span>
+        <div class="summary-row" id="severity-summary"></div>
+      </div>
+      <div class="findings-list" id="judgment-list"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">
+        <h2>accessibility compliance</h2>
+        <span class="panel-sub">pass / fail / needs-review &middot; wcag 2.2</span>
+        <div class="summary-row" id="status-summary"></div>
+      </div>
+      <div class="findings-list" id="compliance-list"></div>
+    </div>
+
+  </section>
+
+  <section id="meta-section" class="meta-section hidden">
+    <span id="meta-text"></span>
+    <button id="run-another-btn" class="btn-text" type="button">run another screenshot</button>
+  </section>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
